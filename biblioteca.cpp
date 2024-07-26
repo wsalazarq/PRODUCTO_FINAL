@@ -19,5 +19,15 @@ void agregarUsuario(string nombre, bool esAdmin) {
         } else {
             cout<<"No se puede agregar mas administradores"<<endl;
         }
+    }else{
+        if (numEstudiantes < maxUsuarios) {
+            estudiantes[numEstudiantes].nombre = nombre;
+            estudiantes[numEstudiantes].esAdmin = esAdmin;
+            numEstudiantes++;
+            cout<<"Estudiante '"<<nombre<<"' agregado correctamente"<<endl;
+        } else {
+            cout<<"No se puede agregar mas estudiantes"<<endl;
+        }
     }
+    system("pause");
 }
