@@ -10,4 +10,6 @@ struct Usuario {
     // true si es administrador y false si es estudiante
 };
 
+void agregarUsuario(string nombre, bool esAdmin);
+
 #endif 
