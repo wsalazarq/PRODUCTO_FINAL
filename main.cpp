@@ -28,15 +28,16 @@ int main(){
     
     int op;
     cout<<"=================================================="<<endl;
-    cout<<"Bienvenido a la BIBLIOTECA "<<nombre<<endl;
+    cout<<"         Bienvenido a la BIBLIOTECA "<<nombre<<endl;
     cout<<"=================================================="<<endl;    
 
     do{
         cout<<"Menu de opciones:"<<endl;
         if (esAdmin == true){
             cout<<"1. Agregar libro"<<endl;
+            cout<<"2. Eliminar libro"<<endl;
         }
-        cout<<"2. Mostrar libros"<<endl;
+        cout<<"3. Mostrar libros"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
@@ -58,6 +59,14 @@ int main(){
                 cout<<endl;
                 break;
             case 2:
+                if (esAdmin == true){
+                    cin.ignore(); cout<<"Ingrese el titulo del libro que desea eliminar: "; getline(cin, titulo);
+                    eliminarLibro(titulo);
+                }else{
+                    cout<<"Opcion invalida, intente de nuevo"<<endl;
+                }
+                break;
+            case 3:
                 mostrarLibros();
                 break;
             case 0:

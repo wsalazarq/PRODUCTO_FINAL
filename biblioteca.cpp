@@ -70,7 +70,10 @@ void agregarLibro(string titulo, string autor, int anio){
 void mostrarLibros(){
     if (numLibros == 0) {
         cout<<"No hay libros en la biblioteca"<<endl;
+        cout<<endl;
     }else{
+        cout<<"En la biblioteca hay: "<<numLibros<<" libros"<<endl;
+        cout<<"============================================="<<endl;
         for (int i = 0; i < numLibros; i++) {
             cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
             cout<<"Autor: "<<biblioteca[i].autor<<endl;
@@ -84,4 +87,24 @@ void mostrarLibros(){
             cout<<endl;
         }
     }
+}
+
+void eliminarLibro(string titulo){
+    bool encontrado = false;
+
+    for (int i = 0; i < numLibros; i++) {
+        if (biblioteca[i].titulo == titulo) {
+            for (int j = i; j < numLibros - 1; j++) {
+                biblioteca[j] = biblioteca[j + 1];
+            }
+            numLibros--;
+            encontrado = true;
+            cout<<"Libro eliminado correctamente"<<endl;
+            
+        }
+    }
+    if (encontrado == false) {
+        cout<<"Libro no encontrado"<<endl;
+    }
+    cout<<endl;
 }
