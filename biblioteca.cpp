@@ -35,3 +35,18 @@ void agregarUsuario(string nombre, bool esAdmin) {
     }
     system("pause");
 }
+
+void agregarLibro(string titulo, string autor, int anio){
+
+    if (numLibros >= maxLibros) {
+        cout<<"No se puede agregar mas libros, la biblioteca está llena"<<endl;
+    }else{
+        biblioteca[numLibros].titulo = titulo;
+        biblioteca[numLibros].autor = autor;
+        biblioteca[numLibros].anio = anio;
+        biblioteca[numLibros].disponible = true;
+        numLibros++;
+        cout<<"Libro '"<<titulo<<"' agregado correctamente"<<endl;
+    }
+    system("pause"); 
+}

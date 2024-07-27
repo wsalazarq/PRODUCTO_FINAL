@@ -18,5 +18,6 @@ struct Usuario {
 };
 
 void agregarUsuario(string nombre, bool esAdmin);
+void agregarLibro(string titulo, string autor, int anio);
 
 #endif 

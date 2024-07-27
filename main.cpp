@@ -39,18 +39,30 @@ int main(){
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
+        string titulo, autor;
+        int anio;
+
         switch (op){
-        case 1:
-            cout<<"Seleccionate Agregar Libro"<<endl;
-            break;
-        case 0:
-            cout<<"Saliendo..."<<endl;
-            system("pause");
-            break;
-        default:
-            cout<<"Opcion invalida, intente de nuevo."<<endl;
-            system("pause");
-            break;
+            case 1:
+                if (esAdmin == true){
+                    cin.ignore(); 
+                    cout<<"Ingrese el titulo del libro: "; getline(cin, titulo);
+                    cout<<"Ingrese el autor del libro: "; getline(cin, autor);
+                    cout<<"Ingrese el anio del libro: ";cin>>anio;
+
+                    agregarLibro(titulo, autor, anio);
+                }else{
+                    cout<<"Opcion invalida, intente de nuevo."<<endl;
+                }
+                break;
+            case 0:
+                cout<<"Saliendo..."<<endl;
+                system("pause");
+                break;
+            default:
+                cout<<"Opcion invalida, intente de nuevo."<<endl;
+                system("pause");
+                break;
         }
 
     } while (op != 0);
