@@ -4,6 +4,13 @@
 #include <iostream>
 using namespace std;
 
+struct Libro {
+    string titulo;
+    string autor;
+    int anio;
+    bool disponible;
+};
+
 struct Usuario {
     string nombre;
     bool esAdmin; 

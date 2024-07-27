@@ -2,10 +2,14 @@
 #include <iostream>
 using namespace std;
 
+const int maxLibros = 100;
 const int maxUsuarios = 100;
+
 Usuario estudiantes[maxUsuarios];
 Usuario administradores[maxUsuarios];
+Libro biblioteca[maxLibros];
 
+int numLibros = 0;
 int numEstudiantes = 0;
 int numAdministradores = 0;
 
