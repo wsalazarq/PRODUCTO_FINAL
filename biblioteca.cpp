@@ -13,7 +13,7 @@ int numLibros = 0;
 int numEstudiantes = 0;
 int numAdministradores = 0;
 
-void agregarUsuario(string nombre, bool esAdmin) {
+void agregarUsuario(string nombre, bool esAdmin){
     if (esAdmin == true) {
         if (numAdministradores < maxUsuarios) {
             administradores[numAdministradores].nombre = nombre;
@@ -36,7 +36,7 @@ void agregarUsuario(string nombre, bool esAdmin) {
     cout<<endl;
 }
 
-bool libroExiste(string titulo) {
+bool libroExiste(string titulo){
     for (int i = 0; i < numLibros; i++) {
         if (biblioteca[i].titulo == titulo) {
             return true;
@@ -65,4 +65,23 @@ void agregarLibro(string titulo, string autor, int anio){
         cout<<"Libro '"<<titulo<<"' agregado correctamente"<<endl;
     }
     cout<<endl;
+}
+
+void mostrarLibros(){
+    if (numLibros == 0) {
+        cout<<"No hay libros en la biblioteca"<<endl;
+    }else{
+        for (int i = 0; i < numLibros; i++) {
+            cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+            cout<<"Autor: "<<biblioteca[i].autor<<endl;
+            cout<<"Anio: "<<biblioteca[i].anio<<endl;
+            cout<<"Disponible: ";
+            if (biblioteca[i].disponible == true) {
+                cout<<"Si"<<endl;
+            } else {
+                cout<<"No"<<endl;
+            }
+            cout<<endl;
+        }
+    }
 }

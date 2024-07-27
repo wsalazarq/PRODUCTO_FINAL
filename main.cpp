@@ -36,6 +36,7 @@ int main(){
         if (esAdmin == true){
             cout<<"1. Agregar libro"<<endl;
         }
+        cout<<"2. Mostrar libros"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
@@ -55,6 +56,9 @@ int main(){
                     cout<<"Opcion invalida, intente de nuevo."<<endl;
                 }
                 cout<<endl;
+                break;
+            case 2:
+                mostrarLibros();
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;

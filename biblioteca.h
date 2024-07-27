@@ -20,5 +20,5 @@ struct Usuario {
 void agregarUsuario(string nombre, bool esAdmin);
 void agregarLibro(string titulo, string autor, int anio);
 bool libroExiste(string titulo);
-
+void mostrarLibros();
 #endif 
