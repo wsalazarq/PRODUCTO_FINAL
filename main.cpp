@@ -11,18 +11,18 @@ int main(){
 
     cin.ignore(); cout<<"Ingrese su nombre: "; getline(cin, nombre);  
         while (usuarioValido == false){
-        cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
-        
-        if (tipoUsuario == 'A' || tipoUsuario == 'a'){
-            esAdmin = true;
-            usuarioValido = true;
-        }else if (tipoUsuario == 'E' || tipoUsuario == 'e'){
-            esAdmin = false;
-            usuarioValido = true;
-        }else{
-            cout<<"La entrada no es valida"<<endl;
+            cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
+            
+            if (tipoUsuario == 'A' || tipoUsuario == 'a'){
+                esAdmin = true;
+                usuarioValido = true;
+            }else if (tipoUsuario == 'E' || tipoUsuario == 'e'){
+                esAdmin = false;
+                usuarioValido = true;
+            }else{
+                cout<<"La entrada no es valida"<<endl;
+            }
         }
-    }
 
     agregarUsuario(nombre, esAdmin);
     
@@ -54,14 +54,14 @@ int main(){
                 }else{
                     cout<<"Opcion invalida, intente de nuevo."<<endl;
                 }
+                cout<<endl;
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
-                system("pause");
                 break;
             default:
                 cout<<"Opcion invalida, intente de nuevo."<<endl;
-                system("pause");
+                cout<<endl;
                 break;
         }
 

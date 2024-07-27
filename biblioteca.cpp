@@ -33,14 +33,30 @@ void agregarUsuario(string nombre, bool esAdmin) {
             cout<<"No se puede agregar mas estudiantes"<<endl;
         }
     }
-    system("pause");
+    cout<<endl;
+}
+
+bool libroExiste(string titulo) {
+    for (int i = 0; i < numLibros; i++) {
+        if (biblioteca[i].titulo == titulo) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void agregarLibro(string titulo, string autor, int anio){
+    bool puedeAgregar = true;
 
     if (numLibros >= maxLibros) {
-        cout<<"No se puede agregar mas libros, la biblioteca está llena"<<endl;
-    }else{
+        cout<<"No se puede agregar mas libros, la biblioteca esta llena"<<endl;
+        puedeAgregar = false;
+    }
+    if (libroExiste(titulo) == true){
+        cout<<"El libro '"<<titulo<<"' ya existe en la biblioteca"<<endl;
+        puedeAgregar = false;
+    }
+    if(puedeAgregar == true){
         biblioteca[numLibros].titulo = titulo;
         biblioteca[numLibros].autor = autor;
         biblioteca[numLibros].anio = anio;
@@ -48,5 +64,5 @@ void agregarLibro(string titulo, string autor, int anio){
         numLibros++;
         cout<<"Libro '"<<titulo<<"' agregado correctamente"<<endl;
     }
-    system("pause"); 
+    cout<<endl;
 }
