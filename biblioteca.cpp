@@ -36,6 +36,22 @@ void agregarUsuario(string nombre, bool esAdmin){
     cout<<endl;
 }
 
+void inicializarLibros(){
+    biblioteca[numLibros++] = {"Cien anios de Soledad", "Gabriel Garcia Marquez", 1967, true};
+    biblioteca[numLibros++] = {"Don Quijote de la Mancha", "Miguel de Cervantes", 1994, true};
+    biblioteca[numLibros++] = {"Orgullo y Prejuicio", "Jane Austen", 2017, true};
+    biblioteca[numLibros++] = {"Leyendas de Herbozonia", "Alberto Prieto Riquelme", 2024, true};
+    biblioteca[numLibros++] = {"La ciudad gris y otros relatos", "Carlos de Tomas", 2011, true};
+    biblioteca[numLibros++] = {"Cronicas de Ciudad Feliz", "Carlos Almira", 2011, true};
+    biblioteca[numLibros++] = {"La utilidad de los deseos", "Esther Aparicio", 2015, true};
+    biblioteca[numLibros++] = {"Los Fantasmas del Nuevo Mundo", "David Aramburo", 2014, true};
+    biblioteca[numLibros++] = {"El Principito", "Antoine de Saint-Exupery", 1943, true};
+    biblioteca[numLibros++] = {"Veinte poemas de amor y una canción desesperada", "Pablo Neruda", 1924, true};
+    biblioteca[numLibros++] = {"Cien sonetos de amor", "Pablo Neruda", 1959, true};    
+    biblioteca[numLibros++] = {"La metamorfosis", "Franz Kafka", 1915, true};
+    biblioteca[numLibros++] = {"El castillo", "Franz Kafka", 1926, true};
+}
+
 bool libroExiste(string titulo){
     for (int i = 0; i < numLibros; i++) {
         if (biblioteca[i].titulo == titulo) {

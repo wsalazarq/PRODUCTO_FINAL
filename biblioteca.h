@@ -22,4 +22,5 @@ void agregarLibro(string titulo, string autor, int anio);
 bool libroExiste(string titulo);
 void mostrarLibros();
 void eliminarLibro(string titulo);
+void inicializarLibros();
 #endif 

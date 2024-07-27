@@ -25,12 +25,12 @@ int main(){
         }
 
     agregarUsuario(nombre, esAdmin);
-    
     int op;
     cout<<"=================================================="<<endl;
     cout<<"         Bienvenido a la BIBLIOTECA "<<nombre<<endl;
     cout<<"=================================================="<<endl;    
 
+    inicializarLibros();
     do{
         cout<<"Menu de opciones:"<<endl;
         if (esAdmin == true){
