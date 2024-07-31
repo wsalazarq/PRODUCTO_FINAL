@@ -4,12 +4,17 @@ using namespace std;
 
 int main(){
     
-    string nombre;
     char tipoUsuario;
     bool esAdmin;
     bool usuarioValido = false;
+ 
+    //Datos del estudiante
+    string nombreEstudiante;
+    string carrera;
+    string codigo;
+    int edadEstudiante;
+    char sexo;
 
-    cin.ignore(); cout<<"Ingrese su nombre: "; getline(cin, nombre);  
         while (usuarioValido == false){
             cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
             
@@ -19,15 +24,21 @@ int main(){
             }else if (tipoUsuario == 'E' || tipoUsuario == 'e'){
                 esAdmin = false;
                 usuarioValido = true;
+                cin.ignore(); 
+                cout<<"Ingrese su nombre: "; getline(cin, nombreEstudiante); 
+                cout<<"Ingrese su carrera: ";getline(cin, carrera);
+                cout<<"Ingrese su codigo universitario: ";cin>>codigo;
+                cout<<"Ingrese su edad: ";cin>>edadEstudiante;
+                cout<<"Ingrese su sexo (M)(F): ";cin>>sexo;
+                agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexo);
             }else{
                 cout<<"La entrada no es valida"<<endl;
             }
         }
 
-    agregarUsuario(nombre, esAdmin);
     int op;
     cout<<"=================================================="<<endl;
-    cout<<"         Bienvenido a la BIBLIOTECA "<<nombre<<endl;
+    cout<<"         Bienvenido a la BIBLIOTECA "<<endl;
     cout<<"=================================================="<<endl;    
 
     inicializarLibros();

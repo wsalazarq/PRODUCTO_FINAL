@@ -5,35 +5,31 @@ using namespace std;
 const int maxLibros = 100;
 const int maxUsuarios = 100;
 
-Usuario estudiantes[maxUsuarios];
-Usuario administradores[maxUsuarios];
+Estudiantes EST[maxUsuarios];
 Libro biblioteca[maxLibros];
 
 int numLibros = 0;
 int numEstudiantes = 0;
 int numAdministradores = 0;
 
-void agregarUsuario(string nombre, bool esAdmin){
-    if (esAdmin == true) {
-        if (numAdministradores < maxUsuarios) {
-            administradores[numAdministradores].nombre = nombre;
-            administradores[numAdministradores].esAdmin = esAdmin;
-            numAdministradores++;
-            cout<<"Administrador '"<<nombre<<"' agregado correctamente"<<endl;
-        } else {
-            cout<<"No se puede agregar mas administradores"<<endl;
-        }
-    }else{
-        if (numEstudiantes < maxUsuarios) {
-            estudiantes[numEstudiantes].nombre = nombre;
-            estudiantes[numEstudiantes].esAdmin = esAdmin;
+void agregarEstudiante(string nombre, string carrera, string codigo, int edad, char sexo){
+    if (numEstudiantes < maxUsuarios){
+        if (edad <= 0){
+            cout<<"La edad tiene que ser un valor positivo"<<endl;
+        }else if(sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f'){
+            EST[numEstudiantes].nombre = nombre;
+            EST[numEstudiantes].carrera = carrera;
+            EST[numEstudiantes].codigo = codigo;
+            EST[numEstudiantes].edad = edad;
+            EST[numEstudiantes].sexo = sexo;
             numEstudiantes++;
-            cout<<"Estudiante '"<<nombre<<"' agregado correctamente"<<endl;
-        } else {
-            cout<<"No se puede agregar mas estudiantes"<<endl;
+            cout<<"Estudiante agregado correctamente"<<endl;
+        }else{
+            cout<<"Ingrese un valor correcto en el sexo"<<endl;
         }
-    }
-    cout<<endl;
+    }else {
+        cout<<"No se puede agregar mas estudiantes"<<endl;
+    } 
 }
 
 void inicializarLibros(){

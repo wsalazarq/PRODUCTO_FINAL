@@ -11,12 +11,16 @@ struct Libro {
     bool disponible;
 };
 
-struct Usuario {
+struct Estudiantes{
     string nombre;
-    bool esAdmin; 
-    // true si es administrador y false si es estudiante
+    string carrera;
+    string codigo;
+    int edad;
+    char sexo;
+    int librosPrestados;
 };
 
+void agregarEstudiante(string, string, string, int, char);
 void agregarUsuario(string nombre, bool esAdmin);
 void agregarLibro(string titulo, string autor, int anio);
 bool libroExiste(string titulo);
