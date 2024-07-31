@@ -13,7 +13,13 @@ int main(){
     string carrera;
     string codigo;
     int edadEstudiante;
-    char sexo;
+    char sexoEstudiante;
+
+    //Datos del administrador
+    string nombreAdminsitrador;
+    string cargo;
+    int edadAdministrador;
+    char sexoAdministrador;
 
         while (usuarioValido == false){
             cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
@@ -21,6 +27,13 @@ int main(){
             if (tipoUsuario == 'A' || tipoUsuario == 'a'){
                 esAdmin = true;
                 usuarioValido = true;
+                cin.ignore(); 
+                cout<<"Ingrese su nombre: "; getline(cin, nombreAdminsitrador); 
+                cout<<"Ingrese su cargo: ";getline(cin, cargo);
+                cout<<"Ingrese su edad: ";cin>>edadAdministrador;
+                cout<<"Ingrese su sexo (M)(F): ";cin>>sexoAdministrador;
+                agregarAdministrador(nombreAdminsitrador, cargo, edadAdministrador, sexoAdministrador);
+                
             }else if (tipoUsuario == 'E' || tipoUsuario == 'e'){
                 esAdmin = false;
                 usuarioValido = true;
@@ -29,8 +42,8 @@ int main(){
                 cout<<"Ingrese su carrera: ";getline(cin, carrera);
                 cout<<"Ingrese su codigo universitario: ";cin>>codigo;
                 cout<<"Ingrese su edad: ";cin>>edadEstudiante;
-                cout<<"Ingrese su sexo (M)(F): ";cin>>sexo;
-                agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexo);
+                cout<<"Ingrese su sexo (M)(F): ";cin>>sexoEstudiante;
+                agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexoEstudiante);
             }else{
                 cout<<"La entrada no es valida"<<endl;
             }

@@ -5,6 +5,7 @@ using namespace std;
 const int maxLibros = 100;
 const int maxUsuarios = 100;
 
+Administradores ADM[maxUsuarios];
 Estudiantes EST[maxUsuarios];
 Libro biblioteca[maxLibros];
 
@@ -29,6 +30,25 @@ void agregarEstudiante(string nombre, string carrera, string codigo, int edad, c
         }
     }else {
         cout<<"No se puede agregar mas estudiantes"<<endl;
+    } 
+}
+
+void agregarAdministrador(string nombre, string cargo, int edad, char sexo){
+    if (numAdministradores < maxUsuarios){
+        if (edad <= 0){
+            cout<<"La edad tiene que ser un valor positivo"<<endl;
+        }else if(sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f'){
+            ADM[numAdministradores].nombre = nombre;
+            ADM[numAdministradores].cargo = cargo;
+            ADM[numAdministradores].edad = edad;
+            ADM[numAdministradores].sexo = sexo;
+            numAdministradores++;
+            cout<<"Administrador agregado correctamente"<<endl;
+        }else{
+            cout<<"Ingrese un valor correcto en el sexo"<<endl;
+        }
+    }else {
+        cout<<"No se puede agregar mas administradores"<<endl;
     } 
 }
 
