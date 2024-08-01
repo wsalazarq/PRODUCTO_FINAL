@@ -1,4 +1,5 @@
 #include "biblioteca.h"
+#include <fstream>
 #include <iostream>
 using namespace std;
 
@@ -24,7 +25,7 @@ void agregarEstudiante(string nombre, string carrera, string codigo, int edad, c
             EST[numEstudiantes].edad = edad;
             EST[numEstudiantes].sexo = sexo;
             numEstudiantes++;
-            cout<<"Estudiante agregado correctamente"<<endl;
+            cout<<"Usted es el estudiante numero "<<numEstudiantes<<endl;
         }else{
             cout<<"Ingrese un valor correcto en el sexo"<<endl;
         }
@@ -43,13 +44,42 @@ void agregarAdministrador(string nombre, string cargo, int edad, char sexo){
             ADM[numAdministradores].edad = edad;
             ADM[numAdministradores].sexo = sexo;
             numAdministradores++;
-            cout<<"Administrador agregado correctamente"<<endl;
+            cout<<"Usted es el administrador numero "<<numAdministradores<<endl;
         }else{
             cout<<"Ingrese un valor correcto en el sexo"<<endl;
         }
     }else {
         cout<<"No se puede agregar mas administradores"<<endl;
     } 
+}   
+
+void mostrarDatosEstudiante(){
+    cout<<"============================================="<<endl;
+    cout<<"Lista de Estudiantes:"<<endl;
+    cout<<"============================================="<<endl;
+    for (int i = 0; i < numEstudiantes; i++) {
+        cout<<"Estudiante "<<i + 1<<endl;
+        cout<<"Nombre: "<<EST[i].nombre<<endl;
+        cout<<"Carrera: "<<EST[i].carrera<<endl;
+        cout<<"Codigo: "<<EST[i].codigo<<endl;
+        cout<<"Edad: "<<EST[i].edad<<endl;
+        cout<<"Sexo: "<<EST[i].sexo<<endl;
+        cout<<"---------------------------------------------"<<endl;
+    }
+}
+
+void mostrarDatosAdministrador(){
+    cout<<"============================================="<<endl;
+    cout<<"Lista de Administradores:"<<endl;
+    cout<<"============================================="<<endl;
+        for (int i = 0; i < numAdministradores; i++) {
+        cout<<"Administrador "<<i + 1 << ":"<<endl;
+        cout<<"Nombre: "<<ADM[i].nombre<<endl;
+        cout<<"Cargo: "<<ADM[i].cargo<<endl;
+        cout<<"Edad: "<<ADM[i].edad<<endl;
+        cout<<"Sexo: "<<ADM[i].sexo<<endl;
+        cout<<"---------------------------------------------" << endl;
+    }
 }
 
 void inicializarLibros(){
@@ -116,7 +146,7 @@ void mostrarLibros(){
             } else {
                 cout<<"No"<<endl;
             }
-            cout<<endl;
+            cout<<"---------------------------------------------"<<endl;
         }
     }
 }
@@ -132,7 +162,6 @@ void eliminarLibro(string titulo){
             numLibros--;
             encontrado = true;
             cout<<"Libro eliminado correctamente"<<endl;
-            
         }
     }
     if (encontrado == false) {

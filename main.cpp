@@ -1,13 +1,12 @@
 #include <iostream>
 #include "biblioteca.h"
+#include <cctype>
 using namespace std;
 
 int main(){
-    
     char tipoUsuario;
     bool esAdmin;
     bool usuarioValido = false;
- 
     //Datos del estudiante
     string nombreEstudiante;
     string carrera;
@@ -21,31 +20,33 @@ int main(){
     int edadAdministrador;
     char sexoAdministrador;
 
-        while (usuarioValido == false){
-            cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
-            
-            if (tipoUsuario == 'A' || tipoUsuario == 'a'){
-                esAdmin = true;
-                usuarioValido = true;
-                cin.ignore(); 
-                cout<<"Ingrese su nombre: "; getline(cin, nombreAdminsitrador); 
-                cout<<"Ingrese su cargo: ";getline(cin, cargo);
-                cout<<"Ingrese su edad: ";cin>>edadAdministrador;
-                cout<<"Ingrese su sexo (M)(F): ";cin>>sexoAdministrador;
-                agregarAdministrador(nombreAdminsitrador, cargo, edadAdministrador, sexoAdministrador);
-                
-            }else if (tipoUsuario == 'E' || tipoUsuario == 'e'){
-                esAdmin = false;
-                usuarioValido = true;
-                cin.ignore(); 
-                cout<<"Ingrese su nombre: "; getline(cin, nombreEstudiante); 
-                cout<<"Ingrese su carrera: ";getline(cin, carrera);
-                cout<<"Ingrese su codigo universitario: ";cin>>codigo;
-                cout<<"Ingrese su edad: ";cin>>edadEstudiante;
-                cout<<"Ingrese su sexo (M)(F): ";cin>>sexoEstudiante;
-                agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexoEstudiante);
-            }else{
-                cout<<"La entrada no es valida"<<endl;
+    while (usuarioValido == false){
+        cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
+        tipoUsuario = toupper(tipoUsuario);
+    
+        if (tipoUsuario == 'A'){
+            esAdmin = true;
+            usuarioValido = true;
+            cin.ignore(); 
+            cout<<"Ingrese su nombre: "; getline(cin, nombreAdminsitrador); 
+            cout<<"Ingrese su cargo: ";getline(cin, cargo);
+            cout<<"Ingrese su edad: ";cin>>edadAdministrador;
+            cout<<"Ingrese su sexo (M)(F): ";cin>>sexoAdministrador;
+            sexoAdministrador = toupper(sexoAdministrador);
+            agregarAdministrador(nombreAdminsitrador, cargo, edadAdministrador, sexoAdministrador);
+
+        }else if (tipoUsuario == 'E'){
+            esAdmin = false;
+            usuarioValido = true;
+            cin.ignore(); 
+            cout<<"Ingrese su nombre: "; getline(cin, nombreEstudiante); 
+            cout<<"Ingrese su carrera: ";getline(cin, carrera);
+            cout<<"Ingrese su codigo universitario: ";cin>>codigo;
+            cout<<"Ingrese su edad: ";cin>>edadEstudiante;
+            cout<<"Ingrese su sexo (M)(F): ";cin>>sexoEstudiante;
+            agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexoEstudiante);
+        }else{
+            cout<<"La entrada no es valida"<<endl;
             }
         }
 
@@ -62,6 +63,7 @@ int main(){
             cout<<"2. Eliminar libro"<<endl;
         }
         cout<<"3. Mostrar libros"<<endl;
+        cout<<"4. Mostrar datos"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
@@ -92,6 +94,23 @@ int main(){
                 break;
             case 3:
                 mostrarLibros();
+                break;
+            case 4:
+                char opDatos;
+                if (esAdmin == true){
+                    cout<<"Ingrese los datos del tipo de usuario que desea mostrar (A para administrador, E para estudiante): ";cin>>opDatos;
+                    opDatos = toupper(opDatos);
+                    
+                    if (opDatos == 'A'){
+                        mostrarDatosAdministrador();
+                    } else if (opDatos == 'E'){
+                        mostrarDatosEstudiante();
+                    } else {
+                        cout<<"Opcion invalida, intente de nuevo"<<endl;
+                    }
+                }else{
+                    mostrarDatosEstudiante();
+                }
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
