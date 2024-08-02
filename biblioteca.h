@@ -36,4 +36,6 @@ bool libroExiste(string titulo);
 void mostrarLibros();
 void eliminarLibro(string titulo);
 void inicializarLibros();
+void cargarDatos();
+void guardarDatos();
 #endif 

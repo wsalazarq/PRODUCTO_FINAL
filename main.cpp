@@ -19,6 +19,8 @@ int main(){
     string cargo;
     int edadAdministrador;
     char sexoAdministrador;
+    
+    cargarDatos();
 
     while (usuarioValido == false){
         cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
@@ -44,6 +46,7 @@ int main(){
             cout<<"Ingrese su codigo universitario: ";cin>>codigo;
             cout<<"Ingrese su edad: ";cin>>edadEstudiante;
             cout<<"Ingrese su sexo (M)(F): ";cin>>sexoEstudiante;
+            sexoEstudiante = toupper(sexoEstudiante);
             agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexoEstudiante);
         }else{
             cout<<"La entrada no es valida"<<endl;
@@ -100,7 +103,7 @@ int main(){
                 if (esAdmin == true){
                     cout<<"Ingrese los datos del tipo de usuario que desea mostrar (A para administrador, E para estudiante): ";cin>>opDatos;
                     opDatos = toupper(opDatos);
-                    
+
                     if (opDatos == 'A'){
                         mostrarDatosAdministrador();
                     } else if (opDatos == 'E'){
@@ -114,6 +117,7 @@ int main(){
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
+                guardarDatos();
                 break;
             default:
                 cout<<"Opcion invalida, intente de nuevo."<<endl;

@@ -54,48 +54,63 @@ void agregarAdministrador(string nombre, string cargo, int edad, char sexo){
 }   
 
 void mostrarDatosEstudiante(){
-    cout<<"============================================="<<endl;
-    cout<<"Lista de Estudiantes:"<<endl;
-    cout<<"============================================="<<endl;
-    for (int i = 0; i < numEstudiantes; i++) {
-        cout<<"Estudiante "<<i + 1<<endl;
-        cout<<"Nombre: "<<EST[i].nombre<<endl;
-        cout<<"Carrera: "<<EST[i].carrera<<endl;
-        cout<<"Codigo: "<<EST[i].codigo<<endl;
-        cout<<"Edad: "<<EST[i].edad<<endl;
-        cout<<"Sexo: "<<EST[i].sexo<<endl;
-        cout<<"---------------------------------------------"<<endl;
+    if (numEstudiantes == 0){
+        cout<<"No hay estudiantes"<<endl;
+        cout<<endl;
+    }else{
+        cout<<"============================================="<<endl;
+        cout<<"Lista de Estudiantes:"<<endl;
+        cout<<"============================================="<<endl;
+        for (int i = 0; i < numEstudiantes; i++) {
+            cout<<"Estudiante "<<i + 1<<endl;
+            cout<<"Nombre: "<<EST[i].nombre<<endl;
+            cout<<"Carrera: "<<EST[i].carrera<<endl;
+            cout<<"Codigo: "<<EST[i].codigo<<endl;
+            cout<<"Edad: "<<EST[i].edad<<endl;
+            cout<<"Sexo: "<<EST[i].sexo<<endl;
+            cout<<"---------------------------------------------"<<endl;
+        }
     }
+    
 }
 
 void mostrarDatosAdministrador(){
-    cout<<"============================================="<<endl;
-    cout<<"Lista de Administradores:"<<endl;
-    cout<<"============================================="<<endl;
-        for (int i = 0; i < numAdministradores; i++) {
-        cout<<"Administrador "<<i + 1 << ":"<<endl;
-        cout<<"Nombre: "<<ADM[i].nombre<<endl;
-        cout<<"Cargo: "<<ADM[i].cargo<<endl;
-        cout<<"Edad: "<<ADM[i].edad<<endl;
-        cout<<"Sexo: "<<ADM[i].sexo<<endl;
-        cout<<"---------------------------------------------" << endl;
+    if (numAdministradores == 0){
+        cout<<"No hay administradores"<<endl;
+        cout<<endl;
+    }else{
+        cout<<"============================================="<<endl;
+        cout<<"Lista de Administradores:"<<endl;
+        cout<<"============================================="<<endl;
+            for (int i = 0; i < numAdministradores; i++) {
+            cout<<"Administrador "<<i + 1 << ":"<<endl;
+            cout<<"Nombre: "<<ADM[i].nombre<<endl;
+            cout<<"Cargo: "<<ADM[i].cargo<<endl;
+            cout<<"Edad: "<<ADM[i].edad<<endl;
+            cout<<"Sexo: "<<ADM[i].sexo<<endl;
+            cout<<"---------------------------------------------" << endl;
+        }
     }
+    
 }
 
 void inicializarLibros(){
-    biblioteca[numLibros++] = {"Cien anios de Soledad", "Gabriel Garcia Marquez", 1967, true};
-    biblioteca[numLibros++] = {"Don Quijote de la Mancha", "Miguel de Cervantes", 1994, true};
-    biblioteca[numLibros++] = {"Orgullo y Prejuicio", "Jane Austen", 2017, true};
-    biblioteca[numLibros++] = {"Leyendas de Herbozonia", "Alberto Prieto Riquelme", 2024, true};
-    biblioteca[numLibros++] = {"La ciudad gris y otros relatos", "Carlos de Tomas", 2011, true};
-    biblioteca[numLibros++] = {"Cronicas de Ciudad Feliz", "Carlos Almira", 2011, true};
-    biblioteca[numLibros++] = {"La utilidad de los deseos", "Esther Aparicio", 2015, true};
-    biblioteca[numLibros++] = {"Los Fantasmas del Nuevo Mundo", "David Aramburo", 2014, true};
-    biblioteca[numLibros++] = {"El Principito", "Antoine de Saint-Exupery", 1943, true};
-    biblioteca[numLibros++] = {"Veinte poemas de amor y una canción desesperada", "Pablo Neruda", 1924, true};
-    biblioteca[numLibros++] = {"Cien sonetos de amor", "Pablo Neruda", 1959, true};    
-    biblioteca[numLibros++] = {"La metamorfosis", "Franz Kafka", 1915, true};
-    biblioteca[numLibros++] = {"El castillo", "Franz Kafka", 1926, true};
+    if (numLibros == 0){
+        biblioteca[numLibros++] = {"Cien anios de Soledad", "Gabriel Garcia Marquez", 1967, true};
+        biblioteca[numLibros++] = {"Don Quijote de la Mancha", "Miguel de Cervantes", 1994, true};
+        biblioteca[numLibros++] = {"Orgullo y Prejuicio", "Jane Austen", 2017, true};
+        biblioteca[numLibros++] = {"Leyendas de Herbozonia", "Alberto Prieto Riquelme", 2024, true};
+        biblioteca[numLibros++] = {"La ciudad gris y otros relatos", "Carlos de Tomas", 2011, true};
+        biblioteca[numLibros++] = {"Cronicas de Ciudad Feliz", "Carlos Almira", 2011, true};
+        biblioteca[numLibros++] = {"La utilidad de los deseos", "Esther Aparicio", 2015, true};
+        biblioteca[numLibros++] = {"Los Fantasmas del Nuevo Mundo", "David Aramburo", 2014, true};
+        biblioteca[numLibros++] = {"El Principito", "Antoine de Saint-Exupery", 1943, true};
+        biblioteca[numLibros++] = {"Veinte poemas de amor y una cancion desesperada", "Pablo Neruda", 1924, true};
+        biblioteca[numLibros++] = {"Cien sonetos de amor", "Pablo Neruda", 1959, true};    
+        biblioteca[numLibros++] = {"La metamorfosis", "Franz Kafka", 1915, true};
+        biblioteca[numLibros++] = {"El castillo", "Franz Kafka", 1926, true};
+    }
+    
 }
 
 bool libroExiste(string titulo){
@@ -162,10 +177,96 @@ void eliminarLibro(string titulo){
             numLibros--;
             encontrado = true;
             cout<<"Libro eliminado correctamente"<<endl;
-        }
+        }   
     }
     if (encontrado == false) {
         cout<<"Libro no encontrado"<<endl;
     }
     cout<<endl;
+}
+
+void cargarDatos(){
+    ifstream archivoEstudiantes("estudiantes.txt");
+    ifstream archivoAdministradores("administradores.txt");
+    ifstream archivoLibros("libros.txt");
+
+    if (archivoEstudiantes.is_open()){
+        while (archivoEstudiantes){
+            getline(archivoEstudiantes, EST[numEstudiantes].nombre);
+            getline(archivoEstudiantes, EST[numEstudiantes].carrera);
+            getline(archivoEstudiantes, EST[numEstudiantes].codigo);
+            archivoEstudiantes>>EST[numEstudiantes].edad;
+            archivoEstudiantes>>EST[numEstudiantes].sexo;
+            archivoEstudiantes.ignore(); 
+            if (archivoEstudiantes){
+                numEstudiantes++;
+            }
+        }
+        archivoEstudiantes.close();
+    }
+
+    if (archivoAdministradores.is_open()) {
+        while (archivoAdministradores){
+            getline(archivoAdministradores, ADM[numAdministradores].nombre);
+            getline(archivoAdministradores, ADM[numAdministradores].cargo);
+            archivoAdministradores >> ADM[numAdministradores].edad;
+            archivoAdministradores >> ADM[numAdministradores].sexo;
+            archivoAdministradores.ignore();
+            if (archivoAdministradores){
+                numAdministradores++;
+            }
+        }
+        archivoAdministradores.close();
+    }
+
+    if (archivoLibros.is_open()) {
+        while (archivoLibros){
+            getline(archivoLibros, biblioteca[numLibros].titulo);
+            getline(archivoLibros, biblioteca[numLibros].autor);
+            archivoLibros>>biblioteca[numLibros].anio;
+            archivoLibros>>biblioteca[numLibros].disponible;
+            archivoLibros.ignore();
+            if (archivoLibros){
+                numLibros++;
+            }
+        }
+        archivoLibros.close();
+    }
+}
+
+void guardarDatos(){
+    ofstream archivoEstudiantes("estudiantes.txt");
+    ofstream archivoAdministradores("administradores.txt");
+    ofstream archivoLibros("libros.txt");
+    
+    if (archivoEstudiantes.is_open()) {
+        for (int i = 0; i < numEstudiantes; i++) {
+            archivoEstudiantes<<EST[i].nombre <<endl
+                               <<EST[i].carrera<<endl
+                               <<EST[i].codigo<<endl
+                               <<EST[i].edad<<endl
+                               <<EST[i].sexo<<endl;
+        }
+        archivoEstudiantes.close();
+    }
+
+    if (archivoAdministradores.is_open()) {
+        for (int i = 0; i < numAdministradores; i++) {
+            archivoAdministradores<<ADM[i].nombre<<endl
+                                   <<ADM[i].cargo<<endl
+                                   <<ADM[i].edad<<endl
+                                   <<ADM[i].sexo<<endl;
+        }
+        archivoAdministradores.close();
+    }
+
+    if (archivoLibros.is_open()) {
+        for (int i = 0; i < numLibros; i++) {
+            archivoLibros<<biblioteca[i].titulo<<endl
+                          <<biblioteca[i].autor<<endl
+                          <<biblioteca[i].anio<<endl
+                          <<biblioteca[i].disponible<<endl;
+        }
+        archivoLibros.close();
+    }
 }
