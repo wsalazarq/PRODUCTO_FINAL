@@ -310,3 +310,33 @@ void solicitarLibro(string codigoEstudiante, string titulo) {
     }
     cout<<"Estudiante no encontrado"<<endl;
 }
+void devolverLibro(string codigoEstudiante,string titulo) {
+    
+    for (int i = 0; i < numEstudiantes; i++) {
+        if (EST[i].codigo == codigoEstudiante) {
+        
+            for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
+                if (EST[i].librosPrestados[j].titulo == titulo) {
+                   
+                    for (int k = 0; k < numLibros; k++) {
+                        if (biblioteca[k].titulo == titulo) {
+                            biblioteca[k].disponible = true;
+                            break;
+                        }
+                    }
+
+                    EST[i].numLibrosPrestados--;
+                    EST[i].librosPrestados[j] = EST[i].librosPrestados[EST[i].numLibrosPrestados];
+
+                    cout<<"Libro '" <<titulo<< "' devuelto correctamente" << endl;
+                    return;
+                }
+            }
+
+            cout<<"El estudiante no tiene prestado el libro '"<<titulo<<endl;
+            return;
+        }
+    }
+
+    cout<<"Estudiante no encontrado"<<endl;
+}
