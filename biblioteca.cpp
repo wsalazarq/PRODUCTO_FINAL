@@ -190,15 +190,25 @@ void cargarDatos(){
     ifstream archivoAdministradores("administradores.txt");
     ifstream archivoLibros("libros.txt");
 
-    if (archivoEstudiantes.is_open()){
-        while (archivoEstudiantes){
+    if (archivoEstudiantes.is_open()) {
+        while (archivoEstudiantes) {
             getline(archivoEstudiantes, EST[numEstudiantes].nombre);
             getline(archivoEstudiantes, EST[numEstudiantes].carrera);
             getline(archivoEstudiantes, EST[numEstudiantes].codigo);
             archivoEstudiantes>>EST[numEstudiantes].edad;
             archivoEstudiantes>>EST[numEstudiantes].sexo;
-            archivoEstudiantes.ignore(); 
-            if (archivoEstudiantes){
+            archivoEstudiantes>>EST[numEstudiantes].numLibrosPrestados;
+            archivoEstudiantes.ignore();
+
+            for (int j = 0; j < EST[numEstudiantes].numLibrosPrestados; j++) {
+                getline(archivoEstudiantes, EST[numEstudiantes].librosPrestados[j].titulo);
+                getline(archivoEstudiantes, EST[numEstudiantes].librosPrestados[j].autor);
+                archivoEstudiantes>>EST[numEstudiantes].librosPrestados[j].anio;
+                archivoEstudiantes>>EST[numEstudiantes].librosPrestados[j].disponible;
+                archivoEstudiantes.ignore();
+            }
+
+            if (archivoEstudiantes) {
                 numEstudiantes++;
             }
         }
@@ -241,11 +251,19 @@ void guardarDatos(){
     
     if (archivoEstudiantes.is_open()) {
         for (int i = 0; i < numEstudiantes; i++) {
-            archivoEstudiantes<<EST[i].nombre <<endl
-                               <<EST[i].carrera<<endl
-                               <<EST[i].codigo<<endl
-                               <<EST[i].edad<<endl
-                               <<EST[i].sexo<<endl;
+            archivoEstudiantes << EST[i].nombre << endl
+                               << EST[i].carrera << endl
+                               << EST[i].codigo << endl
+                               << EST[i].edad << endl
+                               << EST[i].sexo << endl
+                               << EST[i].numLibrosPrestados << endl;
+
+            for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
+                archivoEstudiantes << EST[i].librosPrestados[j].titulo << endl
+                                   << EST[i].librosPrestados[j].autor << endl
+                                   << EST[i].librosPrestados[j].anio << endl
+                                   << EST[i].librosPrestados[j].disponible << endl;
+            }
         }
         archivoEstudiantes.close();
     }

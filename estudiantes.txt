@@ -1,15 +1,24 @@
-Maria
-Ingenieria Ambiental
-2023-123453
-21
-F
-Sebastian
-Medicina
-2022-125643
+Arturo
+sistemas
+2024-119052
 23
 M
-Adrian
-Odontologia
-2024--119052
-21
+2
+Yawar Fiesta
+Jose Maria Arguedas
+1974
+0
+La metamorfosis
+Franz Kafka
+1915
+0
+Dani
+ssitemas
+123
+45
 M
+1
+El Principito
+Antoine de Saint-Exupery
+1943
+0

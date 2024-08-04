@@ -64,9 +64,12 @@ int main(){
         if (esAdmin == true){
             cout<<"1. Agregar libro"<<endl;
             cout<<"2. Eliminar libro"<<endl;
+            cout<<"3. Mostrar libros"<<endl;
+            cout<<"4. Mostrar datos"<<endl;
+        }else{
+            cout<<"3. Mostrar libros"<<endl;
+            cout<<"4. Mostrar datos"<<endl;
         }
-        cout<<"3. Mostrar libros"<<endl;
-        cout<<"4. Mostrar datos"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 

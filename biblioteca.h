@@ -24,7 +24,8 @@ struct Estudiantes{
     string codigo;
     int edad;
     char sexo;
-    int librosPrestados;
+    Libro librosPrestados[10];
+    int numLibrosPrestados = 0;
 };
 
 void agregarEstudiante(string, string, string, int, char);
