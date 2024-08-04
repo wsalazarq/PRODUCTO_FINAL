@@ -288,3 +288,25 @@ void guardarDatos(){
         archivoLibros.close();
     }
 }
+void solicitarLibro(string codigoEstudiante, string titulo) {
+    for (int i = 0; i < numEstudiantes; i++) {
+        if (EST[i].codigo == codigoEstudiante) {
+            if (EST[i].numLibrosPrestados >= 10) {
+                cout<<"El estudiante ya tiene el maximo de 10 libros prestados"<<endl;
+            }else{
+                for (int j = 0; j < numLibros; j++) {
+                    if (biblioteca[j].titulo == titulo && biblioteca[j].disponible) {
+                        biblioteca[j].disponible = false;
+                        EST[i].librosPrestados[EST[i].numLibrosPrestados] = biblioteca[j];
+                        EST[i].numLibrosPrestados++;
+                        cout<<"Libro '"<<titulo << "' prestado a " <<EST[i].nombre<<endl;
+                        return;
+                    }
+                }
+            }
+            cout<<"Libro no disponible"<<endl;
+            return;
+        }
+    }
+    cout<<"Estudiante no encontrado"<<endl;
+}
