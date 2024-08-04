@@ -41,4 +41,6 @@ void cargarDatos();
 void guardarDatos();
 void solicitarLibro(string , string);
 void devolverLibro(string , string );
+void mostrarLibrosPrestadosEstudiantes();
+void mostrarLibrosPrestadosAdmin();
 #endif 
