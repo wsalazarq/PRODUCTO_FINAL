@@ -416,4 +416,45 @@ void buscarLibro(){
             }
             cout<<"Libro no encontrado"<<endl;
             break;
+            case 2:
+            cout<<"Ingrese el autor del libro: "; getline(cin, autor);
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].autor == autor) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
+        case 3:
+            cout<<"Ingrese el anio del libro: "; cin>>anio;
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].anio == anio) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
+        default:
+            cout<<"Opcion de busqueda no valida"<<endl;
+            break;
+    }
+
 }
