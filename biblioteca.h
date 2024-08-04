@@ -43,4 +43,5 @@ void solicitarLibro(string , string);
 void devolverLibro(string , string );
 void mostrarLibrosPrestadosEstudiantes();
 void mostrarLibrosPrestadosAdmin();
+void buscarLibro();
 #endif 
