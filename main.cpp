@@ -69,6 +69,7 @@ int main(){
         }else{
             cout<<"3. Mostrar libros"<<endl;
             cout<<"4. Mostrar datos"<<endl;
+            cout<<"5. Solicitar libro"<<endl;
         }
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
@@ -117,6 +118,12 @@ int main(){
                 }else{
                     mostrarDatosEstudiante();
                 }
+                break;
+            case 5:
+                cin.ignore();
+                cout<<"Ingrese el titulo del libro que desea solicitar: "; getline(cin, titulo);
+                cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
+                solicitarLibro(codigo, titulo);
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
