@@ -397,4 +397,23 @@ void buscarLibro(){
     cout<<"3. Buscar por anio"<<endl;
     cout<<"Seleccione una opcion: ";cin>>opcionBusqueda;
     cin.ignore(); 
+        switch (opcionBusqueda) {
+        case 1:
+            cout<<"Ingrese el titulo del libro: "; getline(cin, titulo);
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].titulo == titulo) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
 }
