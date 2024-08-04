@@ -71,6 +71,8 @@ int main(){
             cout<<"4. Mostrar datos"<<endl;
             cout<<"5. Solicitar libro"<<endl;
             cout<<"6. Devolver libro"<<endl;
+            cout<<"7. mostrar libros prestados"<<endl;
+            cout<<"8. buscar libros "<<endl;
         }
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
