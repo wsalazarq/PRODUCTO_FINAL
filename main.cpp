@@ -131,19 +131,24 @@ int main(){
             case 5:
                 if(esAdmin == false){
                     cin.ignore();
-                cout<<"Ingrese el titulo del libro que desea solicitar: "; getline(cin, titulo);
-                cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
-                solicitarLibro(codigo, titulo);
+                    cout<<"Ingrese el titulo del libro que desea solicitar: "; getline(cin, titulo);
+                    cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
+                    solicitarLibro(codigo, titulo);
                 }
                 else {
                     cout<<"Opcion invalida, intente de nuevo"<<endl;
                 }
                 break;
             case 6:
-                cin.ignore();
-                cout<<"Ingrese el titulo del libro que desea devolver: "; getline(cin, titulo);
-                cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
-                devolverLibro(codigo, titulo);
+                if(esAdmin==false){
+                    cin.ignore();
+                    cout<<"Ingrese el titulo del libro que desea devolver: "; getline(cin, titulo);
+                    cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
+                    devolverLibro(codigo, titulo);
+                }
+                else {
+                    cout<<"Opcion invalida, intente de nuevo"<<endl;
+                }
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
