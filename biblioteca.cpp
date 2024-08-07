@@ -375,3 +375,121 @@ void devolverLibro(string codigoEstudiante,string titulo) {
 
     cout<<"Estudiante no encontrado"<<endl;
 }
+void mostrarLibrosPrestadosEstudiantes(){
+    bool hayPrestamos = false;
+
+    for (int i = 0; i < numEstudiantes; i++) {
+        if (EST[i].numLibrosPrestados > 0) {
+            hayPrestamos = true;
+            cout << "Estudiante: " << EST[i].nombre << " (" << EST[i].codigo << ")" << endl;
+            for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
+                cout << "  Libro: " << EST[i].librosPrestados[j].titulo << " por " << EST[i].librosPrestados[j].autor << endl;
+            }
+            cout<<"---------------------------------------------" << endl;
+        }
+    }
+
+    if (!hayPrestamos) {
+        cout << "No hay libros prestados." << endl;
+    }
+}
+void mostrarLibrosPrestadosAdmin(){
+    bool hayPrestamos = false;
+
+    for (int i = 0; i < numEstudiantes; i++) {
+        if (EST[i].numLibrosPrestados > 0) {
+            hayPrestamos = true;
+            cout << "Estudiante: " << EST[i].nombre << " (" << EST[i].codigo << ")" << endl;
+            cout << "---------------------------------------------" << endl;
+
+            for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
+                cout << "  Titulo: " << EST[i].librosPrestados[j].titulo << endl;
+                cout << "  Autor: " << EST[i].librosPrestados[j].autor << endl;
+                cout << "  Anio: " << EST[i].librosPrestados[j].anio << endl;
+                cout << "  Disponible: ";
+                if (EST[i].librosPrestados[j].disponible) {
+                    cout << "No prestado" << endl;
+                } else {
+                    cout << "Si" << endl;
+                }
+                cout << "---------------------------------------------" << endl;
+            }
+        }
+    }
+
+    if (!hayPrestamos) {
+        cout << "No hay libros prestados" << endl;
+    }
+}
+void buscarLibro(){
+    int opcionBusqueda;
+    string titulo, autor;
+    int anio;
+
+    cout<<"Opciones de busqueda:"<<endl;
+    cout<<"1. Buscar por titulo"<<endl;
+    cout<<"2. Buscar por autor"<<endl;
+    cout<<"3. Buscar por anio"<<endl;
+    cout<<"Seleccione una opcion: ";cin>>opcionBusqueda;
+    cin.ignore(); 
+        switch (opcionBusqueda) {
+        case 1:
+            cout<<"Ingrese el titulo del libro: "; getline(cin, titulo);
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].titulo == titulo) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
+            case 2:
+            cout<<"Ingrese el autor del libro: "; getline(cin, autor);
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].autor == autor) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
+        case 3:
+            cout<<"Ingrese el anio del libro: "; cin>>anio;
+            for (int i = 0; i < numLibros; i++) {
+                if (biblioteca[i].anio == anio) {
+                    cout<<"Libro encontrado:"<<endl;
+                    cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
+                    cout<<"Autor: "<<biblioteca[i].autor<<endl;
+                    cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    if (biblioteca[i].disponible) {
+                        cout << "Si" << endl;
+                    } else {
+                        cout << "No" << endl;
+                    }
+                    return;
+                }
+            }
+            cout<<"Libro no encontrado"<<endl;
+            break;
+        default:
+            cout<<"Opcion de busqueda no valida"<<endl;
+            break;
+    }
+
+}

@@ -76,7 +76,7 @@ int main(){
         cout<<"4. Mostrar datos"<<endl;
         if (esAdmin == false) {
             cout<<"5. Solicitar libro"<<endl;
-            cout<<"6. Devolver libro"<<endl;
+            cout<<"6. Devolver libro"<<endl; 
         }
         cout<<"7. Mostrar libros prestados"<<endl;
         cout<<"8. Buscar libros "<<endl;
@@ -149,6 +149,16 @@ int main(){
                 else {
                     cout<<"Opcion invalida, intente de nuevo"<<endl;
                 }
+                break;
+            case 7:
+                if (esAdmin == true){
+                    mostrarLibrosPrestadosAdmin();
+                }else{
+                    mostrarLibrosPrestadosEstudiantes();
+                }
+                break;
+            case 8:
+                buscarLibro();
                 break;
             case 0:
                 cout<<"Saliendo..."<<endl;
