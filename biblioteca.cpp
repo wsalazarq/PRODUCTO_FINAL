@@ -14,24 +14,26 @@ int numLibros = 0;
 int numEstudiantes = 0;
 int numAdministradores = 0;
 
-void agregarEstudiante(string nombre, string carrera, string codigo, int edad, char sexo){
-    if (numEstudiantes < maxUsuarios){
-        if (edad <= 0){
-            cout<<"La edad tiene que ser un valor positivo"<<endl;
-        }else if(sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f'){
-            EST[numEstudiantes].nombre = nombre;
-            EST[numEstudiantes].carrera = carrera;
-            EST[numEstudiantes].codigo = codigo;
-            EST[numEstudiantes].edad = edad;
-            EST[numEstudiantes].sexo = sexo;
-            numEstudiantes++;
-            cout<<"Usted es el estudiante numero "<<numEstudiantes<<endl;
-        }else{
-            cout<<"Ingrese un valor correcto en el sexo"<<endl;
-        }
-    }else {
-        cout<<"No se puede agregar mas estudiantes"<<endl;
-    } 
+void registrarEstudiante(){
+    if (numEstudiantes >= maxUsuarios){
+        cout<<"No se pueden agregar mas estudiantes"<<endl;
+    }else{
+        cin.ignore(); 
+        cout<<"Ingrese su nombre: "; getline(cin, EST[numEstudiantes].nombre); 
+        cout<<"Ingrese su carrera: ";getline(cin, EST[numEstudiantes].carrera);
+        do{
+            cout<<"Ingrese su edad: ";cin>>EST[numEstudiantes].edad;
+        } while (EST[numEstudiantes].edad <= 0);
+        do{
+            cout<<"Ingrese su sexo (M)(F): ";cin>>EST[numEstudiantes].sexo;
+            EST[numEstudiantes].sexo = toupper(EST[numEstudiantes].sexo);
+        } while (EST[numEstudiantes].sexo != 'M' && EST[numEstudiantes].sexo != 'F');
+
+        cout<<"Ingrese un usuario: ";cin>>EST[numEstudiantes].usuario;
+        cout<<"Ingrese su codigo universitario : ";cin>>EST[numEstudiantes].codigo;
+        numEstudiantes++;
+        cout<<"Estudiante registrado con exito"<<endl;
+    }   
 }
 
 void registrarAdministrador(){

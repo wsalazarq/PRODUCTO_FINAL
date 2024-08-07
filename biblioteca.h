@@ -24,13 +24,14 @@ struct Estudiantes{
     string nombre;
     string carrera;
     string codigo;
+    string usuario;
     int edad;
     char sexo;
     Libro librosPrestados[10];
     int numLibrosPrestados = 0;
 };
 
-void agregarEstudiante(string, string, string, int, char);
+void registrarEstudiante();
 void registrarAdministrador();
 void mostrarDatosEstudiante();
 void mostrarDatosAdministrador();

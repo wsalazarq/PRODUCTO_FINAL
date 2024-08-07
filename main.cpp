@@ -41,7 +41,9 @@ int main(){
                     usuarioValido = true;
                     esAdmin = true;
                 } else if (tipoUsuario == 'E') {
-                    
+                    registrarEstudiante();
+                    usuarioValido = true;
+                    esAdmin = false;
                 } else {
                     cout<<"La entrada no es valida"<<endl;
                 }
