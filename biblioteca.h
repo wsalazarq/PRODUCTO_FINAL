@@ -16,20 +16,25 @@ struct Administradores{
     string cargo;
     int edad;
     char sexo;
+    string usuario;
+    string contrasena;
 };
 
 struct Estudiantes{
     string nombre;
     string carrera;
     string codigo;
+    string usuario;
     int edad;
     char sexo;
     Libro librosPrestados[10];
     int numLibrosPrestados = 0;
 };
 
-void agregarEstudiante(string, string, string, int, char);
-void agregarAdministrador(string, string, int, char);
+void registrarEstudiante();
+void registrarAdministrador();
+bool iniciarSesionAdministrador();
+bool iniciarSesionEstudiante();
 void mostrarDatosEstudiante();
 void mostrarDatosAdministrador();
 void agregarLibro(string titulo, string autor, int anio);
