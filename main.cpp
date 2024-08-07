@@ -67,18 +67,19 @@ int main(){
 
     inicializarLibros();
     do{
-        cout<<"Menu de opciones:"<<endl;
-        if (esAdmin == true){
+        cout << "Menu de opciones:"<<endl;
+        if (esAdmin) {
             cout<<"1. Agregar libro"<<endl;
             cout<<"2. Eliminar libro"<<endl;
-            cout<<"3. Mostrar libros"<<endl;
-            cout<<"4. Mostrar datos"<<endl;
-        }else{
-            cout<<"3. Mostrar libros"<<endl;
-            cout<<"4. Mostrar datos"<<endl;
+        }
+        cout<<"3. Mostrar libros"<<endl;
+        cout<<"4. Mostrar datos"<<endl;
+        if (esAdmin == false) {
             cout<<"5. Solicitar libro"<<endl;
             cout<<"6. Devolver libro"<<endl;
         }
+        cout<<"7. Mostrar libros prestados"<<endl;
+        cout<<"8. Buscar libros "<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
@@ -128,10 +129,15 @@ int main(){
                 }
                 break;
             case 5:
-                cin.ignore();
+                if(esAdmin == false){
+                    cin.ignore();
                 cout<<"Ingrese el titulo del libro que desea solicitar: "; getline(cin, titulo);
                 cout<<"Ingrese el codigo del estudiante: ";cin>>codigo;
                 solicitarLibro(codigo, titulo);
+                }
+                else {
+                    cout<<"Opcion invalida, intente de nuevo"<<endl;
+                }
                 break;
             case 6:
                 cin.ignore();
