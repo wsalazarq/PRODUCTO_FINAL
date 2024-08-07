@@ -57,7 +57,21 @@ void registrarAdministrador(){
         cout<<"Administrador registrado con exito"<<endl;
     }   
 }
-   
+
+bool iniciarSesionAdministrador(){
+    string usuario, contrasena;
+    cout<<"Ingrese el nombre de usuario: ";cin>>usuario;
+    cout<<"Ingrese la contraseña: ";cin>>contrasena;
+
+    for (int i = 0; i < numAdministradores; ++i) {
+        if (ADM[i].usuario == usuario && ADM[i].contrasena == contrasena) {
+            cout<<"Inicio de sesion como administrador exitoso"<<endl;
+            return true;
+        }
+    }
+    cout<<"Usuario o contrasenia incorrectos"<<endl;
+    return false;
+}
 
 void mostrarDatosEstudiante(){
     if (numEstudiantes == 0){

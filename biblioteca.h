@@ -33,6 +33,7 @@ struct Estudiantes{
 
 void registrarEstudiante();
 void registrarAdministrador();
+bool iniciarSesionAdministrador();
 void mostrarDatosEstudiante();
 void mostrarDatosAdministrador();
 void agregarLibro(string titulo, string autor, int anio);

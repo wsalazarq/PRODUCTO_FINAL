@@ -24,7 +24,8 @@ int main(){
                 tipoUsuario = toupper(tipoUsuario);
 
                 if (tipoUsuario == 'A') {
-                    
+                    usuarioValido = iniciarSesionAdministrador();
+                    esAdmin = usuarioValido;
                 } else if (tipoUsuario == 'E') {
                     
                 } else {
