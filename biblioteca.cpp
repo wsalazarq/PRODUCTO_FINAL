@@ -73,6 +73,21 @@ bool iniciarSesionAdministrador(){
     return false;
 }
 
+bool iniciarSesionEstudiante(){
+    string usuario, codigo;
+    cout<<"Ingrese el nombre de usuario: ";cin>>usuario;
+    cout<<"Ingrese su codigo: ";cin>>codigo;
+
+    for (int i = 0; i < numEstudiantes; ++i) {
+        if (EST[i].usuario == usuario && EST[i].codigo == codigo) {
+            cout<<"Inicio de sesion como estudiante exitoso"<<endl;
+            return true;
+        }
+    }
+    cout<<"Usuario o contrasenia incorrectos"<<endl;
+    return false;
+}
+
 void mostrarDatosEstudiante(){
     if (numEstudiantes == 0){
         cout<<"No hay estudiantes"<<endl;

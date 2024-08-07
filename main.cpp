@@ -27,7 +27,8 @@ int main(){
                     usuarioValido = iniciarSesionAdministrador();
                     esAdmin = usuarioValido;
                 } else if (tipoUsuario == 'E') {
-                    
+                    usuarioValido = iniciarSesionEstudiante();
+                    esAdmin = !usuarioValido;
                 } else {
                     cout << "La entrada no es valida" << endl;
                 }
