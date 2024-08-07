@@ -7,51 +7,54 @@ int main(){
     char tipoUsuario;
     bool esAdmin;
     bool usuarioValido = false;
-    //Datos del estudiante
-    string nombreEstudiante;
-    string carrera;
-    string codigo;
-    int edadEstudiante;
-    char sexoEstudiante;
-
-    //Datos del administrador
-    string nombreAdminsitrador;
-    string cargo;
-    int edadAdministrador;
-    char sexoAdministrador;
+    int opInicio;
     
     cargarDatos();
 
-    while (usuarioValido == false){
-        cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";cin>>tipoUsuario;
-        tipoUsuario = toupper(tipoUsuario);
-    
-        if (tipoUsuario == 'A'){
-            esAdmin = true;
-            usuarioValido = true;
-            cin.ignore(); 
-            cout<<"Ingrese su nombre: "; getline(cin, nombreAdminsitrador); 
-            cout<<"Ingrese su cargo: ";getline(cin, cargo);
-            cout<<"Ingrese su edad: ";cin>>edadAdministrador;
-            cout<<"Ingrese su sexo (M)(F): ";cin>>sexoAdministrador;
-            sexoAdministrador = toupper(sexoAdministrador);
-            agregarAdministrador(nombreAdminsitrador, cargo, edadAdministrador, sexoAdministrador);
+   do {
+        cout<<"1. Iniciar Sesion"<<endl;
+        cout<<"2. Registrarse"<<endl;
+        cout<<"3. Salir"<<endl;
+        cout<<"Elija una opcion: ";cin>>opInicio;
 
-        }else if (tipoUsuario == 'E'){
-            esAdmin = false;
-            usuarioValido = true;
-            cin.ignore(); 
-            cout<<"Ingrese su nombre: "; getline(cin, nombreEstudiante); 
-            cout<<"Ingrese su carrera: ";getline(cin, carrera);
-            cout<<"Ingrese su codigo universitario: ";cin>>codigo;
-            cout<<"Ingrese su edad: ";cin>>edadEstudiante;
-            cout<<"Ingrese su sexo (M)(F): ";cin>>sexoEstudiante;
-            sexoEstudiante = toupper(sexoEstudiante);
-            agregarEstudiante(nombreEstudiante, carrera, codigo, edadEstudiante, sexoEstudiante);
-        }else{
-            cout<<"La entrada no es valida"<<endl;
-            }
+        switch (opInicio) {
+            case 1:
+                cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";
+                cin>>tipoUsuario;
+                tipoUsuario = toupper(tipoUsuario);
+
+                if (tipoUsuario == 'A') {
+                    
+                } else if (tipoUsuario == 'E') {
+                    
+                } else {
+                    cout << "La entrada no es valida" << endl;
+                }
+                break;
+            case 2:
+                cout<<"Ingrese el tipo de usuario (A para administrador, E para estudiante): ";
+                cin>>tipoUsuario;
+                tipoUsuario = toupper(tipoUsuario);
+
+                if (tipoUsuario == 'A') {
+                    registrarAdministrador();
+                    usuarioValido = true;
+                    esAdmin = true;
+                } else if (tipoUsuario == 'E') {
+                    
+                } else {
+                    cout<<"La entrada no es valida"<<endl;
+                }
+                break;
+            case 3:
+                cout << "Saliendo..." << endl;
+                guardarDatos();
+                return 0;
+            default:
+                cout<<"Opcion invalida, intente de nuevo"<<endl;
+                break;
         }
+    } while (!usuarioValido);
 
     int op;
     cout<<"=================================================="<<endl;
@@ -75,7 +78,7 @@ int main(){
         cout<<"0. Salir"<<endl;
         cout<<"Seleccione una opcion: ";cin>>op;
 
-        string titulo, autor;
+        string titulo, autor, codigo;
         int anio;
 
         switch (op){

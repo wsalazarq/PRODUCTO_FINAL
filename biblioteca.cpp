@@ -34,24 +34,28 @@ void agregarEstudiante(string nombre, string carrera, string codigo, int edad, c
     } 
 }
 
-void agregarAdministrador(string nombre, string cargo, int edad, char sexo){
-    if (numAdministradores < maxUsuarios){
-        if (edad <= 0){
-            cout<<"La edad tiene que ser un valor positivo"<<endl;
-        }else if(sexo == 'M' || sexo == 'm' || sexo == 'F' || sexo == 'f'){
-            ADM[numAdministradores].nombre = nombre;
-            ADM[numAdministradores].cargo = cargo;
-            ADM[numAdministradores].edad = edad;
-            ADM[numAdministradores].sexo = sexo;
-            numAdministradores++;
-            cout<<"Usted es el administrador numero "<<numAdministradores<<endl;
-        }else{
-            cout<<"Ingrese un valor correcto en el sexo"<<endl;
-        }
-    }else {
-        cout<<"No se puede agregar mas administradores"<<endl;
-    } 
-}   
+void registrarAdministrador(){
+    if (numAdministradores >= maxUsuarios){
+        cout<<"No se pueden agregar mas administradores"<<endl;
+    }else{
+        cin.ignore(); 
+        cout<<"Ingrese su nombre: "; getline(cin, ADM[numAdministradores].nombre); 
+        cout<<"Ingrese su cargo: ";getline(cin, ADM[numAdministradores].cargo);
+        do{
+            cout<<"Ingrese su edad: ";cin>>ADM[numAdministradores].edad;
+        } while (ADM[numAdministradores].edad <= 0);
+        do{
+            cout<<"Ingrese su sexo (M)(F): ";cin>>ADM[numAdministradores].sexo;
+            ADM[numAdministradores].sexo = toupper(ADM[numAdministradores].sexo);
+        } while (ADM[numAdministradores].sexo != 'M' && ADM[numAdministradores].sexo != 'F');
+
+        cout<<"Ingrese un usuario: ";cin>>ADM[numAdministradores].usuario;
+        cout<<"Ingrese una contrasenia : ";cin>>ADM[numAdministradores].contrasena;
+        numAdministradores++;
+        cout<<"Administrador registrado con exito"<<endl;
+    }   
+}
+   
 
 void mostrarDatosEstudiante(){
     if (numEstudiantes == 0){

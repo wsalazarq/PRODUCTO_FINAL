@@ -16,6 +16,8 @@ struct Administradores{
     string cargo;
     int edad;
     char sexo;
+    string usuario;
+    string contrasena;
 };
 
 struct Estudiantes{
@@ -29,7 +31,7 @@ struct Estudiantes{
 };
 
 void agregarEstudiante(string, string, string, int, char);
-void agregarAdministrador(string, string, int, char);
+void registrarAdministrador();
 void mostrarDatosEstudiante();
 void mostrarDatosAdministrador();
 void agregarLibro(string titulo, string autor, int anio);
