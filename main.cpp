@@ -5,13 +5,13 @@ using namespace std;
 
 int main(){
     char tipoUsuario;
-    bool esAdmin;
+    bool esAdmin = false;
     bool usuarioValido = false;
     int opInicio;
     
     cargarDatos();
 
-   do {
+    do {
         cout<<"1. Iniciar Sesion"<<endl;
         cout<<"2. Registrarse"<<endl;
         cout<<"3. Salir"<<endl;
@@ -53,7 +53,7 @@ int main(){
             case 3:
                 cout << "Saliendo..." << endl;
                 guardarDatos();
-                return 0;
+                return 0; 
             default:
                 cout<<"Opcion invalida, intente de nuevo"<<endl;
                 break;
@@ -125,7 +125,7 @@ int main(){
                         cout<<"Opcion invalida, intente de nuevo"<<endl;
                     }
                 }else{
-                    mostrarDatosEstudiante();
+                    mostrarDatosUltimoEstudiante();
                 }
                 break;
             case 5:

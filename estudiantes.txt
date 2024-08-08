@@ -1,24 +1,24 @@
-Arturo
-sistemas
-2024-119052
-23
+David
+Ingenieria de Minas
+21
 M
-2
-Yawar Fiesta
-Jose Maria Arguedas
-1974
-0
-La metamorfosis
+David
+2023-123456
+1
+El castillo
 Franz Kafka
-1915
+1926
 0
-Dani
-ssitemas
-123
-45
+----------------------
+Sebastian Eduardo
+Medicina
+24
 M
+Sebas
+2021-112233
 1
 El Principito
 Antoine de Saint-Exupery
 1943
 0
+----------------------

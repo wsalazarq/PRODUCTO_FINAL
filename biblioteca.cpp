@@ -52,7 +52,7 @@ void registrarAdministrador(){
         } while (ADM[numAdministradores].sexo != 'M' && ADM[numAdministradores].sexo != 'F');
 
         cout<<"Ingrese un usuario: ";cin>>ADM[numAdministradores].usuario;
-        cout<<"Ingrese una contrasenia : ";cin>>ADM[numAdministradores].contrasena;
+        cout<<"Ingrese una contrasenia: ";cin>>ADM[numAdministradores].contrasena;
         numAdministradores++;
         cout<<"Administrador registrado con exito"<<endl;
     }   
@@ -61,7 +61,7 @@ void registrarAdministrador(){
 bool iniciarSesionAdministrador(){
     string usuario, contrasena;
     cout<<"Ingrese el nombre de usuario: ";cin>>usuario;
-    cout<<"Ingrese la contraseña: ";cin>>contrasena;
+    cout<<"Ingrese la contrasenia: ";cin>>contrasena;
 
     for (int i = 0; i < numAdministradores; ++i) {
         if (ADM[i].usuario == usuario && ADM[i].contrasena == contrasena) {
@@ -107,6 +107,23 @@ void mostrarDatosEstudiante(){
         }
     }
     
+}
+
+void mostrarDatosUltimoEstudiante(){
+    if (numEstudiantes == 0){
+        cout<<"No hay estudiantes"<<endl;
+    }else{
+        int i = numEstudiantes - 1;
+        cout<<"============================================="<<endl;
+        cout<<"Datos del estudiante:"<<endl;
+        cout<<"============================================="<<endl;
+        cout<<"Nombre: "<<EST[i].nombre<<endl;
+        cout<<"Carrera: "<<EST[i].carrera<<endl;
+        cout<<"Codigo: "<<EST[i].codigo<<endl;
+        cout<<"Edad: "<<EST[i].edad<<endl;
+        cout<<"Sexo: "<<EST[i].sexo<<endl;
+        cout<<"---------------------------------------------"<<endl;
+    }
 }
 
 void mostrarDatosAdministrador(){
@@ -229,9 +246,10 @@ void cargarDatos(){
         while (archivoEstudiantes) {
             getline(archivoEstudiantes, EST[numEstudiantes].nombre);
             getline(archivoEstudiantes, EST[numEstudiantes].carrera);
-            getline(archivoEstudiantes, EST[numEstudiantes].codigo);
             archivoEstudiantes>>EST[numEstudiantes].edad;
             archivoEstudiantes>>EST[numEstudiantes].sexo;
+            archivoEstudiantes>>EST[numEstudiantes].usuario;
+            archivoEstudiantes>>EST[numEstudiantes].codigo;
             archivoEstudiantes>>EST[numEstudiantes].numLibrosPrestados;
             archivoEstudiantes.ignore();
 
@@ -242,6 +260,8 @@ void cargarDatos(){
                 archivoEstudiantes>>EST[numEstudiantes].librosPrestados[j].disponible;
                 archivoEstudiantes.ignore();
             }
+            string separador;
+            getline(archivoEstudiantes, separador);
 
             if (archivoEstudiantes) {
                 numEstudiantes++;
@@ -256,7 +276,13 @@ void cargarDatos(){
             getline(archivoAdministradores, ADM[numAdministradores].cargo);
             archivoAdministradores >> ADM[numAdministradores].edad;
             archivoAdministradores >> ADM[numAdministradores].sexo;
+            archivoAdministradores >> ADM[numAdministradores].usuario;
+            archivoAdministradores >> ADM[numAdministradores].contrasena;
             archivoAdministradores.ignore();
+
+            string separador;
+            getline(archivoAdministradores, separador);
+
             if (archivoAdministradores){
                 numAdministradores++;
             }
@@ -271,6 +297,10 @@ void cargarDatos(){
             archivoLibros>>biblioteca[numLibros].anio;
             archivoLibros>>biblioteca[numLibros].disponible;
             archivoLibros.ignore();
+
+            string separador;
+            getline(archivoLibros, separador);
+
             if (archivoLibros){
                 numLibros++;
             }
@@ -288,9 +318,10 @@ void guardarDatos(){
         for (int i = 0; i < numEstudiantes; i++) {
             archivoEstudiantes << EST[i].nombre << endl
                                << EST[i].carrera << endl
-                               << EST[i].codigo << endl
                                << EST[i].edad << endl
                                << EST[i].sexo << endl
+                               << EST[i].usuario << endl
+                               << EST[i].codigo << endl
                                << EST[i].numLibrosPrestados << endl;
 
             for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
@@ -299,6 +330,7 @@ void guardarDatos(){
                                    << EST[i].librosPrestados[j].anio << endl
                                    << EST[i].librosPrestados[j].disponible << endl;
             }
+            archivoEstudiantes << "----------------------" << endl;
         }
         archivoEstudiantes.close();
     }
@@ -308,7 +340,10 @@ void guardarDatos(){
             archivoAdministradores<<ADM[i].nombre<<endl
                                    <<ADM[i].cargo<<endl
                                    <<ADM[i].edad<<endl
-                                   <<ADM[i].sexo<<endl;
+                                   <<ADM[i].sexo<<endl
+                                   <<ADM[i].usuario<<endl
+                                   <<ADM[i].contrasena<<endl;
+            archivoAdministradores << "----------------------" << endl;                           
         }
         archivoAdministradores.close();
     }
@@ -319,10 +354,13 @@ void guardarDatos(){
                           <<biblioteca[i].autor<<endl
                           <<biblioteca[i].anio<<endl
                           <<biblioteca[i].disponible<<endl;
+            archivoLibros << "----------------------" << endl;
         }
+        
         archivoLibros.close();
     }
 }
+
 void solicitarLibro(string codigoEstudiante, string titulo) {
     for (int i = 0; i < numEstudiantes; i++) {
         if (EST[i].codigo == codigoEstudiante) {
@@ -359,15 +397,12 @@ void devolverLibro(string codigoEstudiante,string titulo) {
                             break;
                         }
                     }
-
                     EST[i].numLibrosPrestados--;
                     EST[i].librosPrestados[j] = EST[i].librosPrestados[EST[i].numLibrosPrestados];
-
                     cout<<"Libro '" <<titulo<< "' devuelto correctamente" << endl;
                     return;
                 }
             }
-
             cout<<"El estudiante no tiene prestado el libro '"<<titulo<<endl;
             return;
         }
@@ -377,21 +412,24 @@ void devolverLibro(string codigoEstudiante,string titulo) {
 }
 void mostrarLibrosPrestadosEstudiantes(){
     bool hayPrestamos = false;
-
-    for (int i = 0; i < numEstudiantes; i++) {
-        if (EST[i].numLibrosPrestados > 0) {
+    if (numEstudiantes > 0) {
+        int a = numEstudiantes - 1;
+        if (EST[a].numLibrosPrestados > 0) {
             hayPrestamos = true;
-            cout << "Estudiante: " << EST[i].nombre << " (" << EST[i].codigo << ")" << endl;
-            for (int j = 0; j < EST[i].numLibrosPrestados; j++) {
-                cout << "  Libro: " << EST[i].librosPrestados[j].titulo << " por " << EST[i].librosPrestados[j].autor << endl;
+            cout << "Estudiante: " << EST[a].nombre << " (" << EST[a].codigo << ")" << endl;
+            for (int i = 0; i < EST[a].numLibrosPrestados; i++) {
+                cout<< "Libro: " << EST[a].librosPrestados[i].titulo<<endl;
+                cout<< "Autor: " << EST[a].librosPrestados[i].autor<<endl;
+                cout<< "Anio: " << EST[a].librosPrestados[i].anio<<endl;
             }
-            cout<<"---------------------------------------------" << endl;
+            cout << "---------------------------------------------" << endl;
         }
     }
 
     if (!hayPrestamos) {
-        cout << "No hay libros prestados." << endl;
+        cout << "No hay libros prestados" << endl;
     }
+    cout<<endl;
 }
 void mostrarLibrosPrestadosAdmin(){
     bool hayPrestamos = false;
@@ -408,9 +446,9 @@ void mostrarLibrosPrestadosAdmin(){
                 cout << "  Anio: " << EST[i].librosPrestados[j].anio << endl;
                 cout << "  Disponible: ";
                 if (EST[i].librosPrestados[j].disponible) {
-                    cout << "No prestado" << endl;
-                } else {
                     cout << "Si" << endl;
+                } else {
+                    cout << "No" << endl;
                 }
                 cout << "---------------------------------------------" << endl;
             }
@@ -441,6 +479,7 @@ void buscarLibro(){
                     cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
                     cout<<"Autor: "<<biblioteca[i].autor<<endl;
                     cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    cout<<"Disponible: ";
                     if (biblioteca[i].disponible) {
                         cout << "Si" << endl;
                     } else {
@@ -459,6 +498,7 @@ void buscarLibro(){
                     cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
                     cout<<"Autor: "<<biblioteca[i].autor<<endl;
                     cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    cout<<"Disponible: ";
                     if (biblioteca[i].disponible) {
                         cout << "Si" << endl;
                     } else {
@@ -477,6 +517,7 @@ void buscarLibro(){
                     cout<<"Titulo: "<<biblioteca[i].titulo<<endl;
                     cout<<"Autor: "<<biblioteca[i].autor<<endl;
                     cout<<"Anio: "<<biblioteca[i].anio<<endl;
+                    cout<<"Disponible: ";
                     if (biblioteca[i].disponible) {
                         cout << "Si" << endl;
                     } else {

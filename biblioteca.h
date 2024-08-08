@@ -36,6 +36,7 @@ void registrarAdministrador();
 bool iniciarSesionAdministrador();
 bool iniciarSesionEstudiante();
 void mostrarDatosEstudiante();
+void mostrarDatosUltimoEstudiante();
 void mostrarDatosAdministrador();
 void agregarLibro(string titulo, string autor, int anio);
 bool libroExiste(string titulo);
